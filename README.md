@@ -1,10 +1,10 @@
 # rpi-proftpd
 
-A docker image of proftpd for RaspberryPi, based on sdhibit/rpi-raspbian:jessie
+A docker image of proftpd for RaspberryPi, based on resin/rpi-raspbian:jessie
 
 ## Users
 
-You can provide your users list by mounting file at /users with the format :
+You can provide your users list by mounting folder containing a *users* file at /proftpd with the format :
 
 ```
 user password home_dir
