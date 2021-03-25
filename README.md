@@ -10,7 +10,7 @@ You can provide your users list by mounting folder containing *users* files in /
 user password home_dir
 ```
 
-The `home_dir` can be a mounted volume from the host (e.g., `$PWD/folder` mounted to `/proftpd` as specified in your *users* file: `-v $PWD/folder:/proftpd`). This directory must be readable and writable by user 1000, gid 1000 (`chown -R 1000:1000 $PWD/folder`).
+The `home_dir` can be a mounted volume from the host (e.g., `$PWD/folder` mounted to `/proftpd` as specified in your *users* file: `docker [...] -v $PWD/folder:/proftpd [...]`). This directory must be readable and writable by user 1000, gid 1000 (`chown -R 1000:1000 $PWD/folder`).
 
 ## Custom configuration
 
@@ -18,7 +18,7 @@ Put your custom conf in `/etc/proftpd/conf.d`
 
 ## Active Mode
 
-The active mode of FTP require to publish the port 21 of the container. Since active FTP only transmits control commands via port 21 and might open further ports for data transmission, this may fail when trying the dockerized server across the network (to fix see [passive mode](#Passive-Mode)).
+The active mode of FTP require to publish the port 21 of the container. Since active FTP only transmits control commands via port 21 and might open further ports for data transmission, this may fail when trying to reach the dockerized server across the network (for fix see [passive mode](#Passive-Mode)).
 
 ```
 docker run --name proftpd -d -p 21:21 -v $PWD/examples/users:/users tcoupin/rpi-proftpd
